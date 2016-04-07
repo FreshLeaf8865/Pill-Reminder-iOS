@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+    <html>
+        <head>
+            <meta name="viewport" id="viewport" content="width=device-width, height=device-height,
+    		initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+            <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+                <title>Medidoz</title>
+                <link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.2.0.min.css" />
+                <script type="text/javascript" src="js/init.js"></script>
+                <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery-1.8.3.min.js"></script>
+                <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery.mobile-1.2.0.min.js"></script>
+                <script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
+                <script type="text/javascript" charset="utf-8" src="medidoz_english.js"></script>
+                <script type="text/javascript" charset="utf-8" src="medidozEnglishHelperFunctions.js"></script>
+                <script type="text/javascript" charset="utf-8" src="js/datePickerPlugin.js"></script>
+                <script type="text/javascript" charset="utf-8" src="js/LocalNotification.js"></script>
+                <script type="text/javascript" charset="utf-8" src="js/applicationPreferences.js"></script>
+                <script type="text/javascript" charset="utf-8" src="js/GoogleAnalyticsPlugin.js"></script>
+<style>
+                     .header-logo { vertical-align: middle; margin-left: 14px; margin-top: 8px; margin-bottom: 8px; }
+                      .nav-medidoz .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+                                .nav-medidoz .ui-btn .ui-icon { width: 30px!important; height: 35px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
+                                .nav-medidoz .ui-btn-inner { font-size: 14px; padding-top: 50px !important; }
+                                .nav-medidoz .ui-btn-active
+                                {
+                                    background: rgb(223, 223, 223);
+                                    border: 1px solid rgb(187, 187, 187);
+                                    font-weight: bold;
+                                    color: #86009A;
+                                    text-shadow: 0 1px 0 white;
+                                    background-image: -webkit-gradient(linear,left top,left bottom,from( rgb(246, 246, 246) ),to( rgb(224, 224, 224) ));
+                                    background-image: -webkit-linear-gradient( rgb(246, 246, 246),rgb(224, 224, 224) );
+                                    background-image: -moz-linear-gradient( rgb(246, 246, 246),rgb(224, 224, 224) );
+                                    background-image: -ms-linear-gradient( rgb(246, 246, 246),rgb(224, 224, 224) );
+                                    background-image: -o-linear-gradient( rgb(246, 246, 246),rgb(224, 224, 224) );
+                                    background-image: linear-gradient( rgb(246, 246, 246),rgb(224, 224, 224) );
+                                }
+                                #meds .ui-icon { background: url(images/meds.png) 50% 50% no-repeat; background-size: 27px 27px; }
+                                #meds_active .ui-icon { background: url(images/meds_active.png) 50% 50% no-repeat; background-size: 27px 27px; }
+                                #gear .ui-icon { background: url(images/gear.png) 50% 50% no-repeat; background-size: 27px 27px; }
+                                #gear_active .ui-icon { background: url(images/gear_active.png) 50% 50% no-repeat; background-size: 27px 27px; }
+                                #clock .ui-icon { background: url(images/clock.png) 50% 50% no-repeat; background-size: 27px 27px; }
+                                #clock_active .ui-icon { background: url(images/clock_active.png) 50% 50% no-repeat; background-size: 27px 27px; }
+                                </style>
+                            </head>
+                    <body onload="onBodyLoad();">
+                        <div id="pageReminders" data-role="page">
+                            <div data-role="header" data-id="nav_medidoz" data-position="fixed" style="background: #86009A;">
+                                <div>
+                                    <div id="divLogo">
+                                        <img src="images/logo.png" alt="Medidoz" class="header-logo"/>
+                                        <span style="font-size: 1.5em;">Medidoz</span>
+                                    </div>
+                                    <div data-role="navbar" data-iconpos="top" class="nav-medidoz">
+                                        <ul>
+                                            <li><a href="#" data-icon="custom" id="clock_active" class="ui-btn-active ui-state-persist">My Alarms</a></li>
+                                            <li><a href="#pageMedicines" data-icon="custom" id="meds">My Meds</a></li>
+                                            <li><a href="#pageSettings" data-icon="custom" id="gear">Settings</a></li>
+                                        </ul>
+                                    </div><!-- /navbar -->
+                                </div>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                                <div align="center" id="lblToday" style="font-size: 1.1em; margin-top: 50px; margin-bottom: 30px;"></div>
+                                <div>
+                                    <ul id="listReminders" data-role="listview">
+                                        
+                                    </ul>
+                                </div>
+                                <div id="noReminders" style="display: none;">Please add a medicine to list alarms.</div>
+                            </div><!--  /content -->
+                        </div>
+                        
+                        
+                        <div id="pageMedicines" data-role="page">
+                            <div data-role="header" data-id="nav_medidoz" data-position="fixed" style="background: #86009A;">
+                                <div>
+                                    <div id="divLogo">
+                                        <img src="images/logo.png" alt="Medidoz" class="header-logo"/>
+                                        <span style="font-size: 1.5em;">Medidoz</span>
+                                    </div>
+                                    <div data-role="navbar" data-iconpos="top" class="nav-medidoz">
+                                        <ul>
+                                            <li><a href="#pageReminders" data-icon="custom" id="clock">My Alarms</a></li>
+                                            <li><a href="#" data-icon="custom" id="meds_active" class="ui-btn-active ui-state-persist">My Meds</a></li>
+                                            <li><a href="#pageSettings" data-icon="custom" id="gear">Settings</a></li>
+                                        </ul>
+                                    </div><!-- /navbar -->
+                                </div>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                                <div id="divSavedMedicines">
+                                    <ul id="listSavedMedicines" data-role="listview" data-split-theme="b">
+                                        
+                                    </ul>
+                                    <br />
+                                    <div id="noSavedMedicine">You don't have any saved medicine.</div>
+                                </div>
+                                <button data-theme="c" onclick="addMedicine();">Add Medicine</button>
+                            </div><!--  /content -->
+                        </div>
+                        
+                        
+                        <div id="pageAddMedicine" data-role="page">
+                            <div data-role="header" data-id="nav_medidoz" data-position="fixed" style="background: #86009A;">
+                                <div>
+                                    <div id="divLogo">
+                                        <img src="images/logo.png" alt="Medidoz" class="header-logo"/>
+                                        <span style="font-size: 1.5em;">Medidoz</span>
+                                    </div>
+                                    <div data-role="navbar" data-iconpos="top" class="nav-medidoz">
+                                        <ul>
+                                            <li><a href="#pageReminders" data-icon="custom" id="clock">My Alarms</a></li>
+                                            <li><a href="#" data-icon="custom" id="meds_active" class="ui-btn-active ui-state-persist">My Meds</a></li>
+                                            <li><a href="#pageSettings" data-icon="custom" id="gear">Settings</a></li>
+                                        </ul>
+                                    </div><!-- /navbar -->
+                                </div>
+                            </div><!-- /header -->
+                            <div data-role="content" id="divContent">
+                                <div id="section1_medicineName" data-role="fieldcontain" class="ui-body ui-body-c">
+                                    <label for="medicineName">Medicine Name:</label>
+                                    <input type="text" name="medicineName" id="medicineName" value="" placeholder="Please enter the medicine name"/>
+                                </div>
+                                
+                                <div id="section2_medicineType" data-role="fieldcontain" class="ui-body ui-body-c">
+                                    <fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+                                        <legend>Medicine Type:</legend>
+                                        <input type="radio" name="rcMedicineType" id="rcMedicineType0" value="0" checked="checked" onclick="rcMedicineTypeClick(0);" />
+                                        <label for="rcMedicineType0">Tablet</label>
+                                        <input type="radio" name="rcMedicineType" id="rcMedicineType1" value="1" onclick="rcMedicineTypeClick(1);" />
+                                        <label for="rcMedicineType1">Syrup</label>
+                                        <input type="radio" name="rcMedicineType" id="rcMedicineType2" value="2" onclick="rcMedicineTypeClick(2);" />
+                                        <label for="rcMedicineType2">Drops</label>
+                                        <input type="radio" name="rcMedicineType" id="rcMedicineType3" value="3" onclick="rcMedicineTypeClick(3);" />
+                                        <label for="rcMedicineType3">Injection</label>
+                                        <input type="radio" name="rcMedicineType" id="rcMedicineType4" value="4" onclick="rcMedicineTypeClick(4);" />
+                                        <label for="rcMedicineType4">Other</label>
+                                    </fieldset>
+                                </div>
+                                
+                                <div id="section3_medicineDosage" data-role="fieldcontain" class="ui-body ui-body-c">
+                                    <div id="divMedicineType0Dosage">
+                                        <fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+                                            <legend>Dose:</legend>
+                                            <input type="radio" name="rcMedicineType0Dosage" id="rcMedicineType0Dosage0" value="0" checked="checked" onclick="rcMedicineType0DosageClick();" />
+                                            <label for="rcMedicineType0Dosage0">Quarter a tablet</label>
+                                            <input type="radio" name="rcMedicineType0Dosage" id="rcMedicineType0Dosage1" value="1" onclick="rcMedicineType0DosageClick();" />
+                                            <label for="rcMedicineType0Dosage1">Half a tablet</label>
+                                            <input type="radio" name="rcMedicineType0Dosage" id="rcMedicineType0Dosage2" value="2" onclick="rcMedicineType0DosageClick();" />
+                                            <label for="rcMedicineType0Dosage2">Whole tablet</label>
+                                            <input type="radio" name="rcMedicineType0Dosage" id="rcMedicineType0Dosage3" value="3" onclick="rcMedicineType0DosageClick();" />
+                                            <label for="rcMedicineType0Dosage3">2 tablets</label>
+                                            <input type="radio" name="rcMedicineType0Dosage" id="rcMedicineType0Dosage4" value="4" onclick="rcMedicineType0DosageClick();" />
+                                            <label for="rcMedicineType0Dosage4">Diğer</label>
+                                        </fieldset>
+                                    </div>
+                                    <div id="divMedicineType1Dosage" style="display: none;">
+                                        <fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+                                            <legend>Dozaj:</legend>
+                                            <input type="radio" name="rcMedicineType1Dosage" id="rcMedicineType1Dosage0" value="0" checked="checked" onclick="rcMedicineType1DosageClick(this);" />
+                                            <label for="rcMedicineType1Dosage0">Mililiter</label>
+                                            <input type="radio" name="rcMedicineType1Dosage" id="rcMedicineType1Dosage1" value="1" onclick="rcMedicineType1DosageClick(this);" />
+                                            <label for="rcMedicineType1Dosage1">Spoon</label>
+                                        </fieldset>
+                                        <div id="divMedicineType1Dosage0">
+                                            <fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+                                                <legend></legend>
+                                                <label for="ml" class="ui-hidden-accessible">ml:</label>
+                                                <input type="text" name="ml" id="ml" value="" placeholder="ml girin"/>
+                                            </fieldset>
+                                        </div>
+                                        <div id="divMedicineType1Dosage1" style="display: none;">
+                                            <fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+                                                <legend></legend>
+                                                <input type="radio" name="rcMedicineType1Dosage1" id="rcMedicineType1Dosage1_0" value="0" checked="checked" onclick="rcMedicineType1Dosage1Click();"/>
+                                                <label for="rcMedicineType1Dosage1_0">Quarter a spoon</label>
+                                                <input type="radio" name="rcMedicineType1Dosage1" id="rcMedicineType1Dosage1_1" value="1" onclick="rcMedicineType1Dosage1Click();"/>
+                                                <label for="rcMedicineType1Dosage1_1">Half a spoon</label>
+                                                <input type="radio" name="rcMedicineType1Dosage1" id="rcMedicineType1Dosage1_2" value="2" onclick="rcMedicineType1Dosage1Click();"/>
+                                                <label for="rcMedicineType1Dosage1_2">Whole spoon</label>
+                                                <input type="radio" name="rcMedicineType1Dosage1" id="rcMedicineType1Dosage1_3" value="3" onclick="rcMedicineType1Dosage1Click();"/>
+                                                <label for="rcMedicineType1Dosage1_3">2 spoons</label>
+                                                <input type="radio" name="rcMedicineType1Dosage1" id="rcMedicineType1Dosage1_4" value="4" onclick="rcMedicineType1Dosage1Click();"/>
+                                                <label for="rcMedicineType1Dosage1_4">Other</label>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div id="divMedicineType2Dosage" style="display: none;">
+                                        <fieldset data-role="controlgroup" data-mini="true">
+                                            <legend>Dozaj:</legend>
+                                            <table cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <select name="piecesPerTake_Type2" id="piecesPerTake_Type2">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>&nbsp;drops</td>
+                                                </tr>
+                                            </table>
+                                        </fieldset>
+                                    </div>
+                                    <div id="divMedicineType3Dosage" style="display: none;">
+                                        <fieldset data-role="controlgroup" data-mini="true">
+                                            <legend>Dozaj:</legend>
+                                            <table cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <select name="piecesPerTake_Type3" id="piecesPerTake_Type3">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>&nbsp;shots</td>
+                                                </tr>
+                                            </table>
+                                        </fieldset>	
+                                    </div>
+                                    <div id="divMedicineType4Dosage" style="display: none;">
+                                        <fieldset data-role="controlgroup" data-mini="true">
+                                            <legend>Dozaj:</legend>
+                                            <table cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <select name="piecesPerTake_Type4" id="piecesPerTake_Type4">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>&nbsp;pieces</td>
+                                                </tr>
+                                            </table>
+                                        </fieldset>	
+                                    </div>
+                                    <div id="divMedicineType0_1_Dosage4" style="display: none;">
+                                        <fieldset data-role="controlgroup" data-mini="true">
+                                            <legend></legend>
+                                            <table cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <select name="piecesPerTake" id="piecesPerTake">
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><span id="lblMedicineType">&nbsp;tablets</span></td>
+                                                </tr>
+                                            </table>
+                                        </fieldset>	
+                                    </div>
+                                </div>
+                                
+                                <div id="section4_medicineDailyTakeCount" data-role="fieldcontain" class="ui-body ui-body-c">
+                                    <fieldset data-role="controlgroup" data-mini="true">
+                                        <legend>Daily Usage Frequency</legend>
+                                        <table cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td>	
+                                                    <select name="dailyTakeCount" id="dailyTakeCount" onchange="selectDailyTakeCountChange();">
+                                                        <option value="1">1</option>
+                                                        <option value="2" selected="selected">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </td>
+                                                <td>&nbsp;times in a day</td>
+                                            </tr>
+                                        </table>	
+                                    </fieldset>
+                                </div>
+                                
+                                <div id="section4_medicineTakeHours" data-role="fieldcontain" class="ui-body ui-body-c">
+                                    <fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+                                        <legend>Medicine Take Hours</legend>
+                                        <div id="divMedicineTakeHours">
+                                            <div id="divMedicineTakeHour0" style="display: inline-block; margin-right: 10px;"><button id="btnMedicineTakeHour0" data-mytime="08:00" class="nativetimepicker">08:00</button></div>
+                                            <div id="divMedicineTakeHour1" style="display: inline-block; margin-right: 10px;"><button id="btnMedicineTakeHour1" data-mytime="20:00" class="nativetimepicker">20:00</button></div>
+                                            <div style="clear: both;"></div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                
+                                <div id="section5_medicineTakePeriod" data-role="fieldcontain" class="ui-body ui-body-c">
+                                    <fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+                                        <legend>Medicine Take Days</legend>
+                                        <input type="radio" name="rcMedicineTakePeriod" id="rcMedicineTakePeriod0" value="0" checked="checked"/>
+                                        <label for="rcMedicineTakePeriod0">Everyday</label>
+                                        <input type="radio" name="rcMedicineTakePeriod" id="rcMedicineTakePeriod1" value="1"/>
+                                        <label for="rcMedicineTakePeriod1">Every 2 days</label>
+                                        <input type="radio" name="rcMedicineTakePeriod" id="rcMedicineTakePeriod2" value="2"/>
+                                        <label for="rcMedicineTakePeriod2">Once a week</label>
+                                        <input type="radio" name="rcMedicineTakePeriod" id="rcMedicineTakePeriod3" value="3"/>
+                                        <label for="rcMedicineTakePeriod3">Once a month</label>
+                                    </fieldset>
+                                </div>
+                                
+                            </div>			
+                            <button id="btnSaveMedicine" data-theme="a" onclick="saveMedicine();">Save</button>
+                            <br /><br /><br />
+                        </div>
+                        
+                        
+                        <div id="pageSettings" data-role="page">
+                            <div data-role="header" data-id="nav_medidoz" data-position="fixed" style="background: #86009A;">
+                                <div>
+                                    <div id="divLogo">
+                                        <img src="images/logo.png" alt="Medidoz" class="header-logo"/>
+                                        <span style="font-size: 1.5em;">Medidoz</span>
+                                    </div>	
+                                    <div data-role="navbar" data-iconpos="top" class="nav-medidoz">
+                                        <ul>
+                                            <li><a href="#pageReminders" data-icon="custom" id="clock">My Alarms</a></li>
+                                            <li><a href="#pageMedicines" data-icon="custom" id="meds">My Meds</a></li>
+                                            <li><a href="#" data-icon="custom" id="gear_active" class="ui-btn-active ui-state-persist">Settings</a></li>
+                                        </ul>
+                                    </div><!-- /navbar -->
+                                </div>
+                            </div><!-- /header -->
+                            <div data-role="content" id="divSound">
+                                <div id="divSound">
+                                    <div style="float: left; width: 150px;">
+                                        <label for="flipSound">Alarm with sound</label>
+                                    </div>
+                                    <div style="float: right;">
+                                        <select name="flipSound" id="flipSound" data-role="slider" onchange="soundSettingChanged();">
+                                            <option value="off">Off</option>
+                                            <option value="on">On</option>
+                                        </select> 
+                                    </div>
+                                    <div style="clear: both;"></div>	
+                                </div>
+                                <div><br /></div>
+                                <div id="divVibration">
+                                    <div style="float: left; width: 150px;">
+                                        <label for="flipVibration">Alarm with vibration</label>
+                                    </div>
+                                    <div style="float: right;">
+                                        <select name="flipVibration" id="flipVibration" data-role="slider" onchange="vibrationSettingChanged();">
+                                            <option value="off">Off</option>
+                                            <option value="on">On</option>
+                                        </select> 
+                                    </div>
+                                    <div style="clear: both;"></div>	
+                                </div>
+                                <div><br /><br /><br /><br /></div>
+                                <div align="center">For information and legal disclaimer: <br /><a href="http://www.medidoz.com">www.medidoz.com</a><br /><a href="mailto:medidoz@medidoz.com">medidoz@medidoz.com</a></div>
+                                <div><br /><br /><br /></div>
+                                <div align="center">Medidoz is developed by healthcare professionals through the research made on the chronic and short term pill usage behaviors.</div>
+                                <div><br /><br /><br /></div>
+                                <div align="center">Medidoz © 2013. All rights reserved.</div>		
+                            </div><!--  /content -->
+                        </div>
+                    </body>
+                </html>
+
+                
+                
+                
+         
