@@ -36,8 +36,11 @@
 		30E1352710E2C1420031B30D /* Cordova.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30E1352610E2C1420031B30D /* Cordova.plist */; };
 		30E5649213A7FCAF007403D8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 		63F9474D1CB79EFE00F37DA4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63F9474C1CB79EFE00F37DA4 /* Images.xcassets */; };
 		63F947511CB7A00800F37DA4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63F947501CB7A00800F37DA4 /* Launch Screen.storyboard */; };
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
 		D03B86C116AA7E6D00170A70 /* GoogleAnalyticsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = D03B86C016AA7E6D00170A70 /* GoogleAnalyticsPlugin.m */; };
@@ -108,8 +111,11 @@
 		30E5649113A7FCAF007403D8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Medidoz-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Medidoz-Prefix.pch"; sourceTree = "<group>"; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 		63F9474C1CB79EFE00F37DA4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Medidoz/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		63F947501CB7A00800F37DA4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
 		8D1107310486CEB800E47090 /* Medidoz-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Medidoz-Info.plist"; path = "../Medidoz-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -216,7 +222,10 @@
 			isa = PBXGroup;
 			children = (
 <<<<<<< HEAD
+<<<<<<< HEAD
 				63F947501CB7A00800F37DA4 /* Launch Screen.storyboard */,
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
 				D044AC3C16D5D9F4001989DD /* libGoogleAnalytics.a */,
@@ -263,7 +272,10 @@
 			isa = PBXGroup;
 			children = (
 <<<<<<< HEAD
+<<<<<<< HEAD
 				63F9474C1CB79EFE00F37DA4 /* Images.xcassets */,
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
 				30A0434214DC770100060A13 /* de.lproj */,
@@ -449,11 +461,17 @@
 				308D05391370CCF300D202BF /* icon@2x.png in Resources */,
 				3072F99713A8081B00425683 /* Capture.bundle in Resources */,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				63F9474D1CB79EFE00F37DA4 /* Images.xcassets in Resources */,
 				1F766FE113BBADB100FB74C0 /* Localizable.strings in Resources */,
 				1F766FE213BBADB100FB74C0 /* Localizable.strings in Resources */,
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				63F947511CB7A00800F37DA4 /* Launch Screen.storyboard in Resources */,
+=======
+				1F766FE113BBADB100FB74C0 /* Localizable.strings in Resources */,
+				1F766FE213BBADB100FB74C0 /* Localizable.strings in Resources */,
+				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
+>>>>>>> origin/master
 =======
 				1F766FE113BBADB100FB74C0 /* Localizable.strings in Resources */,
 				1F766FE213BBADB100FB74C0 /* Localizable.strings in Resources */,
@@ -552,11 +570,17 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: david1988126@hotmail.com (TDY34E5Y7L)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: david1988126@hotmail.com (TDY34E5Y7L)";
+=======
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+>>>>>>> origin/master
 =======
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -582,7 +606,11 @@
 				PRODUCT_NAME = Medidoz;
 				PROVISIONING_PROFILE = "cb3ed44d-02ed-4148-a515-94514a60cf67";
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cb3ed44d-02ed-4148-a515-94514a60cf67";
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+>>>>>>> origin/master
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 >>>>>>> origin/master
@@ -595,11 +623,17 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: david1988126@hotmail.com (TDY34E5Y7L)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: david1988126@hotmail.com (TDY34E5Y7L)";
+=======
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+>>>>>>> origin/master
 =======
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -623,7 +657,11 @@
 				PRODUCT_NAME = Medidoz;
 				PROVISIONING_PROFILE = "cb3ed44d-02ed-4148-a515-94514a60cf67";
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cb3ed44d-02ed-4148-a515-94514a60cf67";
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+>>>>>>> origin/master
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 >>>>>>> origin/master
@@ -774,11 +812,17 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: david1988126@hotmail.com (TDY34E5Y7L)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: david1988126@hotmail.com (TDY34E5Y7L)";
+=======
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+>>>>>>> origin/master
 =======
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -810,7 +854,11 @@
 				PRODUCT_NAME = Medidoz;
 				PROVISIONING_PROFILE = "cb3ed44d-02ed-4148-a515-94514a60cf67";
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cb3ed44d-02ed-4148-a515-94514a60cf67";
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+>>>>>>> origin/master
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 >>>>>>> origin/master

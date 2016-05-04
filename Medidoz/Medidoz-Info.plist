@@ -9,14 +9,20 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<key>CFBundleIcons~ipad</key>
 	<dict/>
 =======
+=======
+>>>>>>> origin/master
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>icon.png</string>
 		<string>icon@2x.png</string>
 	</array>
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
@@ -35,8 +41,11 @@
 	<key>NSMainNibFile~ipad</key>
 	<string></string>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
 	<key>UISupportedInterfaceOrientations</key>
